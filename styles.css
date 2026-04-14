@@ -87,32 +87,6 @@ body:has(.card:hover) #cursor-ring {
   border-radius: 99px;
 }
 
-/* ── MUSIC BUTTON ── */
-#music-btn {
-  position: fixed; bottom: 24px; right: 24px;
-  z-index: 800;
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  border: 2.5px solid var(--dark);
-  background: var(--yellow);
-  font-size: 1.4rem;
-  cursor: none;
-  box-shadow: 4px 4px 0 var(--dark);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex; align-items: center; justify-content: center;
-}
-#music-btn:hover {
-  transform: translate(-2px,-2px) scale(1.1);
-  box-shadow: 6px 6px 0 var(--dark);
-}
-#music-btn.playing {
-  background: var(--mint);
-  animation: musicPulse 1s ease-in-out infinite;
-}
-@keyframes musicPulse {
-  0%,100% { box-shadow: 4px 4px 0 var(--dark), 0 0 0 0 rgba(110,220,196,0.5); }
-  50%      { box-shadow: 4px 4px 0 var(--dark), 0 0 0 12px rgba(110,220,196,0); }
-}
 
 /* ── RESUME DOWNLOAD ── */
 #resume-btn.downloading {
