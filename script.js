@@ -1,36 +1,10 @@
-// ── LOADER — letter by letter ──
-(function runLoader() {
-  const letters = document.querySelectorAll('.ll');
-  const sub     = document.getElementById('loader-sub');
-
-  gsap.set(letters, { opacity:0, y:80, scale:0.2, rotation:-30 });
-  gsap.set(sub,     { opacity:0, y:16 });
-
-  const tl = gsap.timeline();
-
-  // Letters pop in one by one
-  tl.to(letters, {
-    opacity:1, y:0, scale:1, rotation:0,
-    duration:0.55, stagger:0.13,
-    ease:'back.out(2.8)'
-  })
-  // All letters wave bounce together
-  .to(letters, {
-    y: -22, duration:0.28, stagger:0.07,
-    ease:'power2.out', yoyo:true, repeat:1
-  }, '-=0.1')
-  // Sub text fades in
-  .to(sub, { opacity:1, y:0, duration:0.45, ease:'power2.out' }, '-=0.2')
-  // Progress bar fills
-  .to('#loader-bar', { width:'100%', duration:1.1, ease:'power2.inOut' }, '+=0.15')
-  // Loader exits
-  .to('#loader', { opacity:0, duration:0.45, ease:'power2.in',
-    onComplete: () => {
-      document.getElementById('loader').style.display = 'none';
-      startHeroAnimations();
-    }
-  }, '+=0.1');
-})();
+// ── LOADER ──
+gsap.to('#loader-bar', { width:'100%', duration:1.4, ease:'power2.inOut', onComplete: () => {
+  gsap.to('#loader', { opacity:0, duration:0.5, delay:0.2, onComplete: () => {
+    document.getElementById('loader').style.display = 'none';
+    startHeroAnimations();
+  }});
+}});
 
 // ── CURSOR ──
 const dot = document.getElementById('cursor-dot');
